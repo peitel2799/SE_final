@@ -42,16 +42,16 @@ urlpatterns = [
     path('contact_us', views.Contact_Page, name="contact_page"),
 
     #checkout page
-    path('checkout/', views.CheckOut, name='checkout'),
+    # path('checkout/', views.CheckOut, name='checkout'),
 
     #order_page
-    path('order/', views.Your_Order, name='order'),
+    # path('order/', views.Your_Order, name='order'),
 
     #product page
     path('product/', views.Product_page, name='product'),
 
     #product detail
-    path('product/<str:id>/', views.Product_Detail, name='product_detail'),
+    # path('product/<str:id>/', views.Product_Detail, name='product_detail'),
 
     #search
     path('search/', views.Search, name='search')

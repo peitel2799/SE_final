@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Product 1",
+        "price": 100,
+        "image": "ecommerce/pimage/product1.jpg",
+        "category": "Category 1",
+        "sub_category": "Subcategory 1",
+        "brand": "Brand A",
+        "availability": "In stock"
+    },
+    {
+        "name": "Product 2",
+        "price": 200,
+        "image": "ecommerce/pimage/product2.jpg",
+        "category": "Category 2",
+        "sub_category": "Subcategory 2",
+        "brand": "Brand B",
+        "availability": "Out of stock"
+    }
+]

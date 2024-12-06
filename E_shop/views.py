@@ -1,31 +1,33 @@
 from django.shortcuts import render, redirect, HttpResponse
-from app.models import Category, Product, Contact_us, Order, Brand
+from app.models import Type, Product, Contact_us, LandHouse, Apartment
 from django.contrib.auth import authenticate, login, logout
 from app.models import UseCreateForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from cart.cart import Cart
+import random
 
 def Master(request):
     return render(request, 'master.html')
 
 def Index(request):
-    category = Category.objects.all()
-    brand = Brand.objects.all()
-    brandID = request.GET.get('brand')
-    categoryID = request.GET.get('category')
-
-    if categoryID:
-        product = Product.objects.filter(sub_category = categoryID).order_by('-id')
-    elif brandID:
-        product = Product.objects.filter(brand = brandID).order_by('-id')
+    types = Type.objects.all()
+    type_id = request.GET.get('real_estate_type')
+    
+    # Lọc sản phẩm theo loại hình
+    if type_id:
+        land_houses = LandHouse.objects.filter(real_estate_type_id=type_id).order_by('-id')
+        apartments = Apartment.objects.filter(real_estate_type_id=type_id).order_by('-id')
     else:
-        product = Product.objects.all()
-
+        land_houses = LandHouse.objects.all().order_by('-id')
+        apartments = Apartment.objects.all().order_by('-id')
+    
+    # Kết hợp cả hai loại sản phẩm
+    products = list(land_houses) + list(apartments)
+    random.shuffle(products)
     context = {
-        'category': category,
-        'product' : product,
-        'brand' : brand
+        'types': types,
+        'products': products[:9],
     }
     return render(request, 'index.html', context)
 
@@ -103,61 +105,67 @@ def Contact_Page(request):
         contact.save()
     return render(request, 'contact.html')
 
-def CheckOut(request):
-    if request.method == "POST":
-        address = request.POST.get('address')
-        phone = request.POST.get('phone')
-        pincode = request.POST.get('pincode')
-        cart = request.session.get('cart')
-        uid = request.session.get('_auth_user_id')
-        user = User.objects.get(pk=uid)
-        for i in cart:
-            a = int(cart[i]['price'])
-            b = cart[i]['quantity']
-            total = a*b
-            order = Order(
-                user = user,
-                product = cart[i]['name'],
-                price = cart[i]['price'],
-                quantity = cart[i]['quantity'],
-                image = cart[i]['image'],
-                address = address,
-                phone = phone,
-                pincode = pincode,
-                total = total
-            )
-            order.save()
-        request .session['cart'] = {}
-        return redirect("index")
-    return HttpResponse('This is checkout page')
+# def CheckOut(request):
+#     if request.method == "POST":
+#         address = request.POST.get('address')
+#         phone = request.POST.get('phone')
+#         pincode = request.POST.get('pincode')
+#         cart = request.session.get('cart')
+#         uid = request.session.get('_auth_user_id')
+#         user = User.objects.get(pk=uid)
+#         for i in cart:
+#             a = int(cart[i]['price'])
+#             b = cart[i]['quantity']
+#             total = a*b
+#             order = Order(
+#                 user = user,
+#                 product = cart[i]['name'],
+#                 price = cart[i]['price'],
+#                 quantity = cart[i]['quantity'],
+#                 image = cart[i]['image'],
+#                 address = address,
+#                 phone = phone,
+#                 pincode = pincode,
+#                 total = total
+#             )
+#             order.save()
+#         request .session['cart'] = {}
+#         return redirect("index")
+#     return HttpResponse('This is checkout page')
 
-def Your_Order(requset):
-    uid = requset.session.get('_auth_user_id')
-    user = User.objects.get(pk=uid)
-    order = Order.objects.filter(user = user)
-    context = {
-        "order": order,
-    }
-    return render(requset, 'order.html', context)
+# def Your_Order(requset):
+#     uid = requset.session.get('_auth_user_id')
+#     user = User.objects.get(pk=uid)
+#     order = Order.objects.filter(user = user)
+#     context = {
+#         "order": order,
+#     }
+#     return render(requset, 'order.html', context)
 
 def Product_page(request):
-    category = Category.objects.all()
-    brand = Brand.objects.all()
-    brandID = request.GET.get('brand')
-    categoryID = request.GET.get('category')
+    # Lấy danh sách các loại hình bất động sản
+    types = Type.objects.all()
 
-    if categoryID:
-        product = Product.objects.filter(sub_category = categoryID).order_by('-id')
-    elif brandID:
-        product = Product.objects.filter(brand = brandID).order_by('-id')
+    # Lấy giá trị loại hình từ URL query parameter
+    typeID = request.GET.get('type')
+
+    # Lọc sản phẩm theo loại hình, nếu được chọn
+    if typeID:
+        # Kiểm tra loại hình nào được chọn
+        selected_type = Type.objects.get(id=typeID)
+        if selected_type.name == 'Nhà đất':
+            products = LandHouse.objects.all().order_by('-id')
+        elif selected_type.name == 'Chung cư':
+            products = Apartment.objects.all().order_by('-id')
+        else:
+            products = []  # Không có sản phẩm nào nếu loại hình không hợp lệ
     else:
-        product = Product.objects.all()
+        # Nếu không lọc, lấy toàn bộ sản phẩm
+        products = list(LandHouse.objects.all()) + list(Apartment.objects.all())
 
     context = {
-        'category': category,
-        'brand': brand, 
-        'product': product
-
+        'types': types,  # Truyền danh sách loại hình vào context
+        'products': products,  # Truyền danh sách sản phẩm vào context
     }
     return render(request, 'product.html', context)
 

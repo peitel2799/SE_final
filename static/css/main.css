@@ -8,7 +8,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background:;
+  /* background:; */
   position: relative;
   font-weight:400px;
 }
@@ -875,13 +875,25 @@ h2.title {
 }
 
 
-.productinfo p{
+/* .productinfo p{
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: #696763;
+} */
+.productinfo p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #696763;
+  overflow: hidden; /* Ẩn phần văn bản vượt quá chiều cao */
+  text-overflow: ellipsis; /* Thêm dấu "..." khi văn bản quá dài */
+  display: -webkit-box; /* Sử dụng kiểu hộp hỗ trợ nhiều dòng */
+  -webkit-line-clamp: 2; /* Giới hạn hiển thị 2 dòng */
+  line-clamp: 2; /* Giới hạn hiển thị 2 dòng */
+  -webkit-box-orient: vertical; /* Đảm bảo văn bản được xử lý theo chiều dọc */
+  line-height: 1.4; /* Cải thiện khoảng cách dòng */
 }
-
 .productinfo img{
   width: 100%;
 }
@@ -899,7 +911,7 @@ h2.title {
   transition: height 500ms ease 0s;
   width: 100%;
   display: block;
-  opacity:;
+  /* opacity:; */
 }
 
 .single-products:hover .product-overlay {
