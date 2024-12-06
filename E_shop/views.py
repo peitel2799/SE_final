@@ -147,7 +147,7 @@ def Product_page(request):
     types = Type.objects.all()
 
     # Lấy giá trị loại hình từ URL query parameter
-    typeID = request.GET.get('type')
+    typeID = request.GET.get('real_estate_type')
 
     # Lọc sản phẩm theo loại hình, nếu được chọn
     if typeID:
