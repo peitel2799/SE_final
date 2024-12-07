@@ -181,12 +181,18 @@ def Product_page(request):
     }
     return render(request, 'product.html', context)
 
-def Product_Detail(request):
-    product = Product.objects.filter(id = id).first()
+def Product_Detail(request , id):
+    types = Type.objects.all()
+    
+    product = LandHouse.objects.filter(id = id).first()
+    if product is None:
+        product = Apartment.objects.filter(id = id).first()
+
     context = {
+        'types': types,
         'product': product
     }
-    return render(request, 'product_detail.html', context)
+    return render(request, 'product_detail.html' , context)
 
 def Search(request):
     query = request.GET['query']

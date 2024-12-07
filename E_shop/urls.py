@@ -51,9 +51,11 @@ urlpatterns = [
     path('product/', views.Product_page, name='product'),
 
     #product detail
-    # path('product/<str:id>/', views.Product_Detail, name='product_detail'),
-
+    #path('product/<str:id>/', views.Product_Detail, name='product_detail'),
+    path('product_detail/<int:id>/', views.Product_Detail, name='product_detail'),
+    
+    
     #search
-    path('search/', views.Search, name='search')
+    path('search/', views.Search, name='search'),
 
 ] + static(settings.MEDIA_URL , document_root = settings.MEDIA_ROOT)
