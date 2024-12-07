@@ -12,13 +12,13 @@
                 <div class="left-sidebar">
                     <h2>Loại hình</h2>
                     <div class="panel-group category-products" id="accordian"><!--category-productsr-->
-                        {% for type in types%}
+                        {% for type in types %}
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a href="/product/?real_estate_type={{type.id}}">
+                                    <a href="/product/?real_estate_type={{ type.id }}">
                                         <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                                        {{type.name}}
+                                        {{ type.name }}
                                     </a>
                                 </h4>
                             </div>
@@ -51,7 +51,7 @@
                     
                 </div>
             </div>
-            
+
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
                     <h2 class="title text-center">Features Items</h2>
@@ -79,13 +79,23 @@
                     <div class="clearfix"></div>
                     {% endif %}
                     {% endfor %}
-                    
-                    <ul class="pagination">
-                        <li class="active"><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">&raquo;</a></li>
-                    </ul>
+
+                    <!-- Pagination controls -->
+                    <div class="pagination-wrapper">
+                        <ul class="pagination">
+                            {% if products.has_previous %}
+                                <li><a href="?page={{ products.previous_page_number }}">«</a></li>
+                            {% endif %}
+                            {% for num in products.paginator.page_range %}
+                                <li class="{% if products.number == num %}active{% endif %}">
+                                    <a href="?page={{ num }}">{{ num }}</a>
+                                </li>
+                            {% endfor %}
+                            {% if products.has_next %}
+                                <li><a href="?page={{ products.next_page_number }}">»</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
                 </div><!--features_items-->
             </div>
         </div>

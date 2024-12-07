@@ -154,6 +154,34 @@ def Contact_Page(request):
 #     }
 #     return render(requset, 'order.html', context)
 
+# def Product_page(request):
+#     # Lấy danh sách các loại hình bất động sản
+#     types = Type.objects.all()
+
+#     # Lấy giá trị loại hình từ URL query parameter
+#     typeID = request.GET.get('real_estate_type')
+
+#     # Lọc sản phẩm theo loại hình, nếu được chọn
+#     if typeID:
+#         # Kiểm tra loại hình nào được chọn
+#         selected_type = Type.objects.get(id=typeID)
+#         if selected_type.name == 'Nhà đất':
+#             products = LandHouse.objects.all().order_by('-id')
+#         elif selected_type.name == 'Chung cư':
+#             products = Apartment.objects.all().order_by('-id')
+#         else:
+#             products = []  # Không có sản phẩm nào nếu loại hình không hợp lệ
+#     else:
+#         # Nếu không lọc, lấy toàn bộ sản phẩm
+#         products = list(LandHouse.objects.all()) + list(Apartment.objects.all())
+
+#     context = {
+#         'types': types,  # Truyền danh sách loại hình vào context
+#         'products': products,  # Truyền danh sách sản phẩm vào context
+#     }
+#     return render(request, 'product.html', context)
+from django.core.paginator import Paginator
+
 def Product_page(request):
     # Lấy danh sách các loại hình bất động sản
     types = Type.objects.all()
@@ -163,7 +191,6 @@ def Product_page(request):
 
     # Lọc sản phẩm theo loại hình, nếu được chọn
     if typeID:
-        # Kiểm tra loại hình nào được chọn
         selected_type = Type.objects.get(id=typeID)
         if selected_type.name == 'Nhà đất':
             products = LandHouse.objects.all().order_by('-id')
@@ -174,10 +201,17 @@ def Product_page(request):
     else:
         # Nếu không lọc, lấy toàn bộ sản phẩm
         products = list(LandHouse.objects.all()) + list(Apartment.objects.all())
+        # products = sorted(products, key=lambda x: x.id, reverse=True)  # Sort all products by id
+        random.shuffle(products)
+
+    # Add pagination
+    paginator = Paginator(products, 9)  # Show 9 products per page
+    page_number = request.GET.get('page')  # Get the current page number from the query string
+    page_obj = paginator.get_page(page_number)  # Get the corresponding page
 
     context = {
-        'types': types,  # Truyền danh sách loại hình vào context
-        'products': products,  # Truyền danh sách sản phẩm vào context
+        'types': types,        # Truyền danh sách loại hình vào context
+        'products': page_obj,  # Pass the paginated products (page_obj) into context
     }
     return render(request, 'product.html', context)
 
