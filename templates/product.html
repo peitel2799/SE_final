@@ -12,46 +12,22 @@
                 <div class="left-sidebar">
                     <h2>Loại hình</h2>
                     <div class="panel-group category-products" id="accordian"><!--category-productsr-->
-                        {% for type in types%}
+                        {% for type in types %}
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a href="/product/?real_estate_type={{type.id}}">
+                                    <a href="/product/?real_estate_type={{ type.id }}">
                                         <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                                        {{type.name}}
+                                        {{ type.name }}
                                     </a>
                                 </h4>
                             </div>
                         </div>
-                        {%endfor%}
-                    </div><!--/category-productsr-->
-                
-                    <div class="brands_products"><!--brands_products-->
-                        <h2>Brands</h2>
-                        <div class="brands-name">
-                            <ul class="nav nav-pills nav-stacked">
-                                {%for i in brand%}
-                                <li><a href="/product/?brand={{i.id}}"> <span class="pull-right">(50)</span>{{i.name}}</a></li>
-                                {%endfor%}
-                            </ul>
-                        </div>
-                    </div><!--/brands_products-->
-                    
-                    <div class="price-range"><!--price-range-->
-                        <h2>Price Range</h2>
-                        <div class="well">
-                             <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
-                             <b>$ 0</b> <b class="pull-right">$ 600</b>
-                        </div>
-                    </div><!--/price-range-->
-                    
-                    <div class="shipping text-center"><!--shipping-->
-                        <img src="images/home/shipping.jpg" alt="" />
-                    </div><!--/shipping-->
-                    
+                        {% endfor %}
+                    </div><!--/category-products-->
                 </div>
             </div>
-            
+
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
                     <h2 class="title text-center">Features Items</h2>
@@ -60,9 +36,9 @@
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    <img src="/{{prod.image}}" alt="{{prod.title}}" style="width: 100%; height: 300px; object-fit: cover; border-radius: 5px;" />
-                                    <h2>${{prod.price}}</h2>
-                                    <p>{{prod.title}}</p>
+                                    <img src="/{{ prod.image }}" alt="{{ prod.title }}" style="width: 100%; height: 300px; object-fit: cover; border-radius: 5px;" />
+                                    <h2>${{ prod.price }}</h2>
+                                    <p>{{ prod.title }}</p>
                                     <a href="{% url 'cart_add' prod.id %}" class="btn btn-default add-to-cart">
                                         <i class="fa fa-shopping-cart"></i>Add to cart
                                     </a>
@@ -80,13 +56,23 @@
                     <div class="clearfix"></div>
                     {% endif %}
                     {% endfor %}
-                    
-                    <ul class="pagination">
-                        <li class="active"><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">&raquo;</a></li>
-                    </ul>
+
+                    <!-- Pagination controls -->
+                    <div class="pagination-wrapper">
+                        <ul class="pagination">
+                            {% if products.has_previous %}
+                                <li><a href="?page={{ products.previous_page_number }}">«</a></li>
+                            {% endif %}
+                            {% for num in products.paginator.page_range %}
+                                <li class="{% if products.number == num %}active{% endif %}">
+                                    <a href="?page={{ num }}">{{ num }}</a>
+                                </li>
+                            {% endfor %}
+                            {% if products.has_next %}
+                                <li><a href="?page={{ products.next_page_number }}">»</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
                 </div><!--features_items-->
             </div>
         </div>
