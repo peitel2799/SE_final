@@ -14,39 +14,39 @@
                     <div class="carousel-inner">
                         <div class="item active">
                             <div class="col-sm-6">
-                                <h1><span>E</span>-SHOPPER</h1>
-                                <h2>Free E-Commerce Template</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                <h1><span>CHILL</span>House</h1>
+                                <h2>Imperia Sky Garden</h2>
+                                <p> Địa chỉ: P.Vĩnh Tuy, Q.Hai Bà Trưng, TP.Hà Nội</p>
+                                <p> Chủ đầu tư: TERRA GOLD Việt Nam</p>
                                 <button type="button" class="btn btn-default get">Get it now</button>
                             </div>
                             <div class="col-sm-6">
-                                <img src="/static/images/home/girl1.jpg" class="girl img-responsive" alt="" />
-                                <img src="/static/images/home/pricing.png"  class="pricing" alt="" />
+                                <img src="/static/images/home/duan1.png" class="girl img-responsive" alt="" />
                             </div>
                         </div>
                         <div class="item">
                             <div class="col-sm-6">
-                                <h1><span>E</span>-SHOPPER</h1>
-                                <h2>100% Responsive Design</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                <h1><span>CHILL</span>House</h1>
+                                <h2>Vinhomes Times City</h2>
+                                <p> Địa chỉ: P.Vĩnh Tuy, Q.Hai Bà Trưng, TP.Hà Nội </p>
+                                <p> Chủ đầu tư: Công ty Cổ Phần Phát Triển Đô Thị Nam Hà Nội </p>
                                 <button type="button" class="btn btn-default get">Get it now</button>
                             </div>
                             <div class="col-sm-6">
-                                <img src="/static/images/home/girl2.jpg" class="girl img-responsive" alt="" />
-                                <img src="/static/images/home/pricing.png"  class="pricing" alt="" />
+                                <img src="/static/images/home/duan2.png" class="girl img-responsive" alt="     " />
                             </div>
                         </div>
                         
                         <div class="item">
                             <div class="col-sm-6">
-                                <h1><span>E</span>-SHOPPER</h1>
-                                <h2>Free Ecommerce Template</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                <h1><span>CHILL</span>House</h1>
+                                <h2>Vinhomes Smart City</h2>
+                                <p> Địa chỉ: P. Tây Mỗ, Q. Nam Từ Liêm, TP. Hà Nội </p>
+                                <p> Chủ đầu tư: Tập đoàn Vingroup, MIK group, Tập đoàn Samty Nhật Bản </p>
                                 <button type="button" class="btn btn-default get">Get it now</button>
                             </div>
                             <div class="col-sm-6">
-                                <img src="/static/images/home/girl3.jpg" class="girl img-responsive" alt="" />
-                                <img src="/static/images/home/pricing.png" class="pricing" alt="" />
+                                <img src="/static/images/home/duan3.png" class="girl img-responsive" alt="     " />
                             </div>
                         </div>
                         
@@ -120,16 +120,17 @@
                             <div class="single-products">
                                 <div class="productinfo text-center">
                                     <img src="{{prod.image}}" alt="{{prod.title}}" style="width: 100%; height: 300px; object-fit: cover; border-radius: 5px;" />
-                                    <h2>{{prod.price}} đ</h2>
+                                    <h2>${{prod.price}}</h2>
                                     <p>{{prod.title}}</p>
                                     <a href="{% url 'cart_add' prod.id %}" class="btn btn-default add-to-cart">
-                                        <i class="fa fa-shopping-cart"></i>Thêm vào Yêu thích
+                                        <i class="fa fa-shopping-cart"></i>Add to cart
                                     </a>
                                 </div>
                             </div>
                             <div class="choose">
                                 <ul class="nav nav-pills nav-justified">
-                                    <li><a href="{% url 'product_detail' prod.id %}"><i class="fa fa-plus-square"></i>Thông tin sản phẩm</a></li>
+                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -145,11 +146,11 @@
                 <div class="category-tab"><!--category-tab-->
                     <div class="col-sm-12">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#tshirt" data-toggle="tab">T-Shirt</a></li>
-                            <li><a href="#blazers" data-toggle="tab">Blazers</a></li>
-                            <li><a href="#sunglass" data-toggle="tab">Sunglass</a></li>
-                            <li><a href="#kids" data-toggle="tab">Kids</a></li>
-                            <li><a href="#poloshirt" data-toggle="tab">Polo shirt</a></li>
+                            <li class="active"><a href="#tshirt" data-toggle="tab">Q.Hai Bà Trưng</a></li>
+                            <li><a href="#blazers" data-toggle="tab">Q.Nam Từ Liêm</a></li>
+                            <li><a href="#sunglass" data-toggle="tab">Q.Đống Đa</a></li>
+                            <li><a href="#kids" data-toggle="tab">Q.Cầu Giấy</a></li>
+                            <li><a href="#poloshirt" data-toggle="tab">Q.Ba Đình</a></li>
                         </ul>
                     </div>
                     <div class="tab-content">
@@ -158,9 +159,9 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/static/images/home/gallery1.jpg" alt="" />
-                                            <h2>56 đ</h2>
-                                            <p>Easy Polo Black Edition</p>
+                                            <img src="/static/images/home/hbt1.png" alt="" />
+                                            <h2>$7.98 tỷ</h2>
+                                            <p>Nhà mặt ngõ cách Minh Khai 30m, diện tích 40m² x 4 tầng, mặt tiền 3.4m</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                         
@@ -171,9 +172,9 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/static/images/home/gallery2.jpg" alt="" />
-                                            <h2>56 đ</h2>
-                                            <p>Easy Polo Black Edition</p>
+                                            <img src="/static/images/home/dd1.jpg" alt="" />
+                                            <h2>$12.7 tỷ</h2>
+                                            <p>Nhà mặt ngõ cách Bạch Mai 30m, diện tích 51.4m² x 7 tầng, mặt tiền 3.57m</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                         
@@ -184,9 +185,9 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/static/images/home/gallery3.jpg" alt="" />
-                                            <h2>56 đ</h2>
-                                            <p>Easy Polo Black Edition</p>
+                                            <img src="/static/images/home/hbt3.jpg" alt="" />
+                                            <h2>$13.8 tỷ</h2>
+                                            <p>Nhà mặt ngõ cách Cửa Nam 30m, diện tích 50m² x 5 tầng, nhà 2 mặt tiền</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                         
@@ -197,9 +198,9 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/static/images/home/gallery4.jpg" alt="" />
-                                            <h2>56 đ</h2>
-                                            <p>Easy Polo Black Edition</p>
+                                            <img src="/static/images/home/hbt4.jpg" alt="" />
+                                            <h2>$7.98 tỷ</h2>
+                                            <p>Nhà mặt ngõ cách Vương Thừa Vũ 50m, diện tích 37.7m² x 4 tầng, mặt tiền 3.8m</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                         
@@ -213,9 +214,9 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/static/images/home/gallery4.jpg" alt="" />
-                                            <h2>56 đ</h2>
-                                            <p>Easy Polo Black Edition</p>
+                                            <img src="/static/images/home/ntl1.jpg" alt="" />
+                                            <h2>$5.55 tỷ</h2>
+                                            <p>Nhà mặt ngõ cách Phú Đô 150m, diện tích 46m² x 4 tầng, mặt tiền 1.5m</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                         
@@ -226,9 +227,9 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/static/images/home/gallery3.jpg" alt="" />
-                                            <h2>56 đ</h2>
-                                            <p>Easy Polo Black Edition</p>
+                                            <img src="/static/images/home/ntl2.jpg" alt="" />
+                                            <h2>$6.5 tỷ</h2>
+                                            <p>Nhà mặt ngõ cách Mỹ Đình 150m, diện tích 50.6m² x 4 tầng, mặt tiền 1.4m</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                         
@@ -239,9 +240,9 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/static/images/home/gallery2.jpg" alt="" />
-                                            <h2>56 đ</h2>
-                                            <p>Easy Polo Black Edition</p>
+                                            <img src="/static/images/home/ntl3.jpg" alt="" />
+                                            <h2>$6.9 tỷ</h2>
+                                            <p>Nhà mặt ngõ cách Mỹ Đình 150m, diện tích 30m² x 5 tầng, mặt tiền 3.6m</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                         
@@ -252,9 +253,9 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/static/images/home/gallery1.jpg" alt="" />
-                                            <h2>56 đ</h2>
-                                            <p>Easy Polo Black Edition</p>
+                                            <img src="/static/images/home/ntl4.jpg" alt="" />
+                                            <h2>$11 tỷ</h2>
+                                            <p>Nhà mặt ngõ cách Mỹ Đình 150m, diện tích 52m² x 7 tầng, mặt tiền 6.24m</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                         
@@ -268,9 +269,9 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/static/images/home/gallery3.jpg" alt="" />
-                                            <h2>56 đ</h2>
-                                            <p>Easy Polo Black Edition</p>
+                                            <img src="/static/images/home/dd2.jpg" alt="" />
+                                            <h2>$16.5 tỷ</h2>
+                                            <p>Nhà mặt ngõ cách Khâm Thiên 70m, diện tích 70m² x 7 tầng, mặt tiền 1.71m</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                         
@@ -281,9 +282,9 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/static/images/home/gallery4.jpg" alt="" />
-                                            <h2>56 đ</h2>
-                                            <p>Easy Polo Black Edition</p>
+                                            <img src="/static/images/home/dd3.jpg" alt="" />
+                                            <h2>$7.5 tỷ</h2>
+                                            <p>Nhà mặt ngõ cách Khâm Thiên 200m, diện tích 35.2m² x 5 tầng, mặt tiền 6.2m</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                         
@@ -294,9 +295,9 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/static/images/home/gallery1.jpg" alt="" />
-                                            <h2>56 đ</h2>
-                                            <p>Easy Polo Black Edition</p>
+                                            <img src="/static/images/home/dd4.jpg" alt="" />
+                                            <h2>$5.35 tỷ</h2>
+                                            <p>Nhà mặt ngõ cách Khâm Thiên 10m, diện tích 33.2m² x 4 tầng, mặt tiền 2m</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                         
@@ -307,9 +308,9 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/static/images/home/gallery2.jpg" alt="" />
-                                            <h2>56 đ</h2>
-                                            <p>Easy Polo Black Edition</p>
+                                            <img src="/static/images/home/dd5.jpg" alt="" />
+                                            <h2>$5.5 tỷ</h2>
+                                            <p>Nhà mặt ngõ cách Khâm Thiên 120m, diện tích 36.6m² x 5 tầng, mặt tiền 1.8m</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                         
@@ -323,9 +324,9 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/static/images/home/gallery1.jpg" alt="" />
-                                            <h2>56 đ</h2>
-                                            <p>Easy Polo Black Edition</p>
+                                            <img src="/static/images/home/cg1.jpg" alt="" />
+                                            <h2>$19.8 tỷ</h2>
+                                            <p>Nhà mặt ngõ cách Hoàng Quốc Việt 50m, diện tích 64.9m² x 4 tầng, mặt tiền 5.94m</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                         
@@ -336,9 +337,9 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/static/images/home/gallery2.jpg" alt="" />
-                                            <h2>56 đ</h2>
-                                            <p>Easy Polo Black Edition</p>
+                                            <img src="/static/images/home/cg2.jpg" alt="" />
+                                            <h2>$18 tỷ</h2>
+                                            <p>Nhà mặt ngõ cách Hoàng Quốc Việt 30m, diện tích 57m² x 4 tầng, mặt tiền 5.29m</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                         
@@ -349,9 +350,9 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/static/images/home/gallery3.jpg" alt="" />
-                                            <h2>56 đ</h2>
-                                            <p>Easy Polo Black Edition</p>
+                                            <img src="/static/images/home/cg3.jpg" alt="" />
+                                            <h2>$ 10.7 tỷ</h2>
+                                            <p>Nhà mặt ngõ cách Hoàng Quốc Việt 20m, diện tích 30.4m² x 3 tầng, mặt tiền 4m</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                         
@@ -362,9 +363,9 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/static/images/home/gallery4.jpg" alt="" />
-                                            <h2>56 đ</h2>
-                                            <p>Easy Polo Black Edition</p>
+                                            <img src="/static/images/home/cg4.jpg" alt="" />
+                                            <h2>$20.5 tỷ</h2>
+                                            <p>Nhà mặt ngõ cách Hoàng Quốc Việt 70m, diện tích 78.6m² x 9 tầng, mặt tiền 6.03m</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                         
@@ -378,9 +379,9 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/static/images/home/gallery2.jpg" alt="" />
-                                            <h2>56 đ</h2>
-                                            <p>Easy Polo Black Edition</p>
+                                            <img src="/static/images/home/Bd1.png" alt="" />
+                                            <h2>$9.1 tỷ</h2>
+                                            <p>Nhà mặt ngõ cách Nguyên Hồng 50m, diện tích 42.6m² x 4 tầng, mặt tiền 3.07m</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                         
@@ -391,9 +392,9 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/static/images/home/gallery4.jpg" alt="" />
-                                            <h2>56 đ</h2>
-                                            <p>Easy Polo Black Edition</p>
+                                            <img src="/static/images/home/bd2.jpg" alt="" />
+                                            <h2>$7.4 tỷ</h2>
+                                            <p>Nhà mặt ngõ cách Hoàng Hoa Thám 30m, diện tích 32m² x 6 tầng, mặt tiền 4.3m</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                         
@@ -404,9 +405,9 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/static/images/home/gallery3.jpg" alt="" />
-                                            <h2>56 đ</h2>
-                                            <p>Easy Polo Black Edition</p>
+                                            <img src="/static/images/home/bd3.jpg" alt="" />
+                                            <h2>$10 tỷ</h2>
+                                            <p>Nhà mặt ngõ cách Hoàng Hoa Thám 120m, diện tích 132.3m² x 8 tầng, mặt tiền 4m</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                         
@@ -417,9 +418,9 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/static/images/home/gallery1.jpg" alt="" />
-                                            <h2>56 đ</h2>
-                                            <p>Easy Polo Black Edition</p>
+                                            <img src="/static/images/home/bd4.jpg" alt="" />
+                                            <h2>$10.6 tỷ</h2>
+                                            <p>Nhà mặt ngõ cách Hoàng Hoa Thám 900m, diện tích 36.2m² x 7 tầng, mặt tiền 4m</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                         
@@ -428,104 +429,7 @@
                             </div>
                         </div>
                     </div>
-                </div><!--/category-tab-->
                 
-                <div class="recommended_items"><!--recommended_items-->
-                    <h2 class="title text-center">recommended items</h2>
-                    
-                    <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="item active">	
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="/static/images/home/recommend1.jpg" alt="" />
-                                                <h2>56 đ</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="/static/images/home/recommend2.jpg" alt="" />
-                                                <h2>56 đ</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="/static/images/home/recommend3.jpg" alt="" />
-                                                <h2>56 đ</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">	
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="/static/images/home/recommend1.jpg" alt="" />
-                                                <h2>56 đ</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="/static/images/home/recommend2.jpg" alt="" />
-                                                <h2>56 đ</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="images/home/recommend3.jpg" alt="" />
-                                                <h2>56 đ</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                         <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
-                            <i class="fa fa-angle-left"></i>
-                          </a>
-                          <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-                            <i class="fa fa-angle-right"></i>
-                          </a>			
-                    </div>
-                </div><!--/recommended_items-->
             </div>
         </div>
     </div>
