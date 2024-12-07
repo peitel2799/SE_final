@@ -54,7 +54,6 @@ urlpatterns = [
     #path('product/<str:id>/', views.Product_Detail, name='product_detail'),
     path('product_detail/<int:id>/', views.Product_Detail, name='product_detail'),
     
-    
     #search
     path('search/', views.Search, name='search'),
 

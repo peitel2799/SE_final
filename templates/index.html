@@ -100,12 +100,13 @@
                         <h2>Price Range</h2>
                         <div class="well text-center">
                              <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
-                             <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
+                             <b class="pull-left"> 0</b> <b class="pull-right"> 600</b>
                         </div>
                     </div><!--/price-range-->
                     
                     <div class="shipping text-center"><!--shipping-->
-                        <img src="/static/images/home/shipping.jpg" alt="" />
+                        <img src="\static\images\home\8xbet.jpg" alt="" style="margin-bottom: 20px;" />
+                        <img src="/static/images/home/adv.gif" alt="" style="margin-bottom: 20px;" />
                     </div><!--/shipping-->
                 
                 </div>
@@ -120,17 +121,16 @@
                             <div class="single-products">
                                 <div class="productinfo text-center">
                                     <img src="{{prod.image}}" alt="{{prod.title}}" style="width: 100%; height: 300px; object-fit: cover; border-radius: 5px;" />
-                                    <h2>${{prod.price}}</h2>
+                                    <h2>{{prod.price}}</h2>
                                     <p>{{prod.title}}</p>
                                     <a href="{% url 'cart_add' prod.id %}" class="btn btn-default add-to-cart">
-                                        <i class="fa fa-shopping-cart"></i>Add to cart
+                                        <i class="fa fa-shopping-cart"></i>Thêm vào yêu thích
                                     </a>
                                 </div>
                             </div>
                             <div class="choose">
                                 <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                                    <li><a href="{% url 'product_detail' prod.id %}"><i class="fa fa-plus-square"></i>Thông tin sản phẩm</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -143,293 +143,176 @@
                 </div><!--features_items-->
             </section>
                 
-                <div class="category-tab"><!--category-tab-->
-                    <div class="col-sm-12">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#tshirt" data-toggle="tab">Q.Hai Bà Trưng</a></li>
-                            <li><a href="#blazers" data-toggle="tab">Q.Nam Từ Liêm</a></li>
-                            <li><a href="#sunglass" data-toggle="tab">Q.Đống Đa</a></li>
-                            <li><a href="#kids" data-toggle="tab">Q.Cầu Giấy</a></li>
-                            <li><a href="#poloshirt" data-toggle="tab">Q.Ba Đình</a></li>
-                        </ul>
+            <div class="category-tab"><!--category-tab-->
+                <div class="col-sm-12">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#Q_HM" data-toggle="tab">Q. Hoàng Mai</a></li>
+                        <li><a href="#Q_NTL" data-toggle="tab">Q. Nam Từ Liêm</a></li>
+                        <li><a href="#Q_DD" data-toggle="tab">Q. Đống Đa</a></li>
+                        <li><a href="#Q_CG" data-toggle="tab">Q. Cầu Giấy</a></li>
+                        <li><a href="#Q_HD" data-toggle="tab">Q. Hà Đông</a></li>
+                        <li><a href="#H_GL" data-toggle="tab">H. Gia Lâm</a></li>
+                        <li><a href="#Q_LB" data-toggle="tab">Q. Long Biên</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <!-- Q. Hoàng Mai -->
+                    <div class="tab-pane fade active in" id="Q_HM">
+                        {% for prod in products_by_area.Q_HBT %}
+                            <div class="col-sm-3">
+                                <div class="product-image-wrapper">
+                                    <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <img src="{{ prod.image }}" alt="" style="width: 100%; height: 300px; object-fit: cover; border-radius: 5px;"/>
+                                            <h2>{{ prod.price }}</h2>
+                                            <p>{{ prod.title }}</p>
+                                            <a href="{% url 'cart_add' prod.id %}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào yêu thích</a>
+                                            <div class="choose">
+                                                <ul class="nav nav-pills nav-justified">
+                                                    <li><a href="{% url 'product_detail' prod.id %}"><i class="fa fa-plus-square"></i>Thông tin sản phẩm</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
                     </div>
-                    <div class="tab-content">
-                        <div class="tab-pane fade active in" id="tshirt" >
+            
+                    <!-- Q. Nam Từ Liêm -->
+                    <div class="tab-pane fade" id="Q_NTL">
+                        {% for prod in products_by_area.Q_NTL %}
                             <div class="col-sm-3">
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/static/images/home/hbt1.png" alt="" />
-                                            <h2>$7.98 tỷ</h2>
-                                            <p>Nhà mặt ngõ cách Minh Khai 30m, diện tích 40m² x 4 tầng, mặt tiền 3.4m</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            <img src="{{ prod.image }}" alt="" style="width: 100%; height: 300px; object-fit: cover; border-radius: 5px;"/>
+                                            <h2>{{ prod.price }}</h2>
+                                            <p>{{ prod.title }}</p>
+                                            <a href="{% url 'cart_add' prod.id %}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào yêu thích</a>
+                                            <div class="choose">
+                                                <ul class="nav nav-pills nav-justified">
+                                                    <li><a href="{% url 'product_detail' prod.id %}"><i class="fa fa-plus-square"></i>Thông tin sản phẩm</a></li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                        
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="/static/images/home/dd1.jpg" alt="" />
-                                            <h2>$12.7 tỷ</h2>
-                                            <p>Nhà mặt ngõ cách Bạch Mai 30m, diện tích 51.4m² x 7 tầng, mặt tiền 3.57m</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="/static/images/home/hbt3.jpg" alt="" />
-                                            <h2>$13.8 tỷ</h2>
-                                            <p>Nhà mặt ngõ cách Cửa Nam 30m, diện tích 50m² x 5 tầng, nhà 2 mặt tiền</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="/static/images/home/hbt4.jpg" alt="" />
-                                            <h2>$7.98 tỷ</h2>
-                                            <p>Nhà mặt ngõ cách Vương Thừa Vũ 50m, diện tích 37.7m² x 4 tầng, mặt tiền 3.8m</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="tab-pane fade" id="blazers" >
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="/static/images/home/ntl1.jpg" alt="" />
-                                            <h2>$5.55 tỷ</h2>
-                                            <p>Nhà mặt ngõ cách Phú Đô 150m, diện tích 46m² x 4 tầng, mặt tiền 1.5m</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="/static/images/home/ntl2.jpg" alt="" />
-                                            <h2>$6.5 tỷ</h2>
-                                            <p>Nhà mặt ngõ cách Mỹ Đình 150m, diện tích 50.6m² x 4 tầng, mặt tiền 1.4m</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="/static/images/home/ntl3.jpg" alt="" />
-                                            <h2>$6.9 tỷ</h2>
-                                            <p>Nhà mặt ngõ cách Mỹ Đình 150m, diện tích 30m² x 5 tầng, mặt tiền 3.6m</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="/static/images/home/ntl4.jpg" alt="" />
-                                            <h2>$11 tỷ</h2>
-                                            <p>Nhà mặt ngõ cách Mỹ Đình 150m, diện tích 52m² x 7 tầng, mặt tiền 6.24m</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="tab-pane fade" id="sunglass" >
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="/static/images/home/dd2.jpg" alt="" />
-                                            <h2>$16.5 tỷ</h2>
-                                            <p>Nhà mặt ngõ cách Khâm Thiên 70m, diện tích 70m² x 7 tầng, mặt tiền 1.71m</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="/static/images/home/dd3.jpg" alt="" />
-                                            <h2>$7.5 tỷ</h2>
-                                            <p>Nhà mặt ngõ cách Khâm Thiên 200m, diện tích 35.2m² x 5 tầng, mặt tiền 6.2m</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="/static/images/home/dd4.jpg" alt="" />
-                                            <h2>$5.35 tỷ</h2>
-                                            <p>Nhà mặt ngõ cách Khâm Thiên 10m, diện tích 33.2m² x 4 tầng, mặt tiền 2m</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="/static/images/home/dd5.jpg" alt="" />
-                                            <h2>$5.5 tỷ</h2>
-                                            <p>Nhà mặt ngõ cách Khâm Thiên 120m, diện tích 36.6m² x 5 tầng, mặt tiền 1.8m</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="tab-pane fade" id="kids" >
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="/static/images/home/cg1.jpg" alt="" />
-                                            <h2>$19.8 tỷ</h2>
-                                            <p>Nhà mặt ngõ cách Hoàng Quốc Việt 50m, diện tích 64.9m² x 4 tầng, mặt tiền 5.94m</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="/static/images/home/cg2.jpg" alt="" />
-                                            <h2>$18 tỷ</h2>
-                                            <p>Nhà mặt ngõ cách Hoàng Quốc Việt 30m, diện tích 57m² x 4 tầng, mặt tiền 5.29m</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="/static/images/home/cg3.jpg" alt="" />
-                                            <h2>$ 10.7 tỷ</h2>
-                                            <p>Nhà mặt ngõ cách Hoàng Quốc Việt 20m, diện tích 30.4m² x 3 tầng, mặt tiền 4m</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="/static/images/home/cg4.jpg" alt="" />
-                                            <h2>$20.5 tỷ</h2>
-                                            <p>Nhà mặt ngõ cách Hoàng Quốc Việt 70m, diện tích 78.6m² x 9 tầng, mặt tiền 6.03m</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="tab-pane fade" id="poloshirt" >
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="/static/images/home/Bd1.png" alt="" />
-                                            <h2>$9.1 tỷ</h2>
-                                            <p>Nhà mặt ngõ cách Nguyên Hồng 50m, diện tích 42.6m² x 4 tầng, mặt tiền 3.07m</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="/static/images/home/bd2.jpg" alt="" />
-                                            <h2>$7.4 tỷ</h2>
-                                            <p>Nhà mặt ngõ cách Hoàng Hoa Thám 30m, diện tích 32m² x 6 tầng, mặt tiền 4.3m</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="/static/images/home/bd3.jpg" alt="" />
-                                            <h2>$10 tỷ</h2>
-                                            <p>Nhà mặt ngõ cách Hoàng Hoa Thám 120m, diện tích 132.3m² x 8 tầng, mặt tiền 4m</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="/static/images/home/bd4.jpg" alt="" />
-                                            <h2>$10.6 tỷ</h2>
-                                            <p>Nhà mặt ngõ cách Hoàng Hoa Thám 900m, diện tích 36.2m² x 7 tầng, mặt tiền 4m</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
-                
+                    
+                    <div class="tab-pane fade" id="Q_DD" >
+                        {% for prod in products_by_area.Q_DD %}
+                            <div class="col-sm-3">
+                                <div class="product-image-wrapper">
+                                    <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <img src="{{ prod.image }}" alt="" style="width: 100%; height: 300px; object-fit: cover; border-radius: 5px;"/>
+                                            <h2>{{ prod.price }}</h2>
+                                            <p>{{ prod.title }}</p>
+                                            <a href="{% url 'cart_add' prod.id %}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào yêu thích</a>
+                                            <div class="choose">
+                                                <ul class="nav nav-pills nav-justified">
+                                                    <li><a href="{% url 'product_detail' prod.id %}"><i class="fa fa-plus-square"></i>Thông tin sản phẩm</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        
+                    </div>
+                    
+                    <div class="tab-pane fade" id="Q_CG" >
+                        {% for prod in products_by_area.Q_CG %}
+                            <div class="col-sm-3">
+                                <div class="product-image-wrapper">
+                                    <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <img src="{{ prod.image }}" alt="" style="width: 100%; height: 300px; object-fit: cover; border-radius: 5px;"/>
+                                            <h2>{{ prod.price }}</h2>
+                                            <p>{{ prod.title }}</p>
+                                            <a href="{% url 'cart_add' prod.id %}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào yêu thích</a>
+                                            <div class="choose">
+                                                <ul class="nav nav-pills nav-justified">
+                                                    <li><a href="{% url 'product_detail' prod.id %}"><i class="fa fa-plus-square"></i>Thông tin sản phẩm</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="tab-pane fade" id="Q_HD" >
+                        {% for prod in products_by_area.Q_BD %}
+                            <div class="col-sm-3">
+                                <div class="product-image-wrapper">
+                                    <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <img src="{{ prod.image }}" alt="" style="width: 100%; height: 300px; object-fit: cover; border-radius: 5px;"/>
+                                            <h2>{{ prod.price }}</h2>
+                                            <p>{{ prod.title }}</p>
+                                            <a href="{% url 'cart_add' prod.id %}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào yêu thích</a>
+                                            <div class="choose">
+                                                <ul class="nav nav-pills nav-justified">
+                                                    <li><a href="{% url 'product_detail' prod.id %}"><i class="fa fa-plus-square"></i>Thông tin sản phẩm</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="tab-pane fade" id="H_GL" >
+                        {% for prod in products_by_area.H_GL %}
+                            <div class="col-sm-3">
+                                <div class="product-image-wrapper">
+                                    <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <img src="{{ prod.image }}" alt="" style="width: 100%; height: 300px; object-fit: cover; border-radius: 5px;"/>
+                                            <h2>{{ prod.price }}</h2>
+                                            <p>{{ prod.title }}</p>
+                                            <a href="{% url 'cart_add' prod.id %}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào yêu thích</a>
+                                            <div class="choose">
+                                                <ul class="nav nav-pills nav-justified">
+                                                    <li><a href="{% url 'product_detail' prod.id %}"><i class="fa fa-plus-square"></i>Thông tin sản phẩm</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="tab-pane fade" id="Q_LB" >
+                        {% for prod in products_by_area.Q_LB %}
+                            <div class="col-sm-3">
+                                <div class="product-image-wrapper">
+                                    <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <img src="{{ prod.image }}" alt="" style="width: 100%; height: 300px; object-fit: cover; border-radius: 5px;"/>
+                                            <h2>{{ prod.price }}</h2>
+                                            <p>{{ prod.title }}</p>
+                                            <a href="{% url 'cart_add' prod.id %}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào yêu thích</a>
+                                            <div class="choose">
+                                                <ul class="nav nav-pills nav-justified">
+                                                    <li><a href="{% url 'product_detail' prod.id %}"><i class="fa fa-plus-square"></i>Thông tin sản phẩm</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
         </div>
     </div>

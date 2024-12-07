@@ -11,10 +11,11 @@ def Master(request):
     return render(request, 'master.html')
 
 def Index(request):
+    # Lấy tất cả các loại hình
     types = Type.objects.all()
     type_id = request.GET.get('real_estate_type')
     
-    # Lọc sản phẩm theo loại hình
+    # Lọc sản phẩm theo loại hình nếu `type_id` được cung cấp
     if type_id:
         land_houses = LandHouse.objects.filter(real_estate_type_id=type_id).order_by('-id')
         apartments = Apartment.objects.filter(real_estate_type_id=type_id).order_by('-id')
@@ -22,12 +23,25 @@ def Index(request):
         land_houses = LandHouse.objects.all().order_by('-id')
         apartments = Apartment.objects.all().order_by('-id')
     
-    # Kết hợp cả hai loại sản phẩm
+    # Lọc sản phẩm theo khu vực trước khi kết hợp
+    products_by_area = {
+        "Q_HBT": list(land_houses.filter(address__startswith="Q. Hoàng Mai")) + list(apartments.filter(address__startswith="Q. Hoàng Mai")),
+        "Q_NTL": list(land_houses.filter(address__startswith="Q. Nam Từ Liêm")) + list(apartments.filter(address__startswith="Q. Nam Từ Liêm")),
+        "Q_DD": list(land_houses.filter(address__startswith="Q. Đống Đa")) + list(apartments.filter(address__startswith="Q. Đống Đa")),
+        "Q_CG": list(land_houses.filter(address__startswith="Q. Cầu Giấy")) + list(apartments.filter(address__startswith="Q. Cầu Giấy")),
+        "Q_BD": list(land_houses.filter(address__startswith="Q. Hà Đông")) + list(apartments.filter(address__startswith="Q. Hà Đông")),
+        "H_GL":list(land_houses.filter(address__startswith="H. Gia Lâm")) + list(apartments.filter(address__startswith="H. Gia Lâm")),
+        "Q_LB":list(land_houses.filter(address__startswith="Q. Long Biên")) + list(apartments.filter(address__startswith="Q. Long Biên")),
+    }
+    
+    # Kết hợp tất cả sản phẩm lại
     products = list(land_houses) + list(apartments)
     random.shuffle(products)
+    
     context = {
         'types': types,
-        'products': products[:9],
+        'products': products[:9],  # Hiển thị tối đa 9 sản phẩm ngẫu nhiên
+        'products_by_area': products_by_area,
     }
     return render(request, 'index.html', context)
 
@@ -215,18 +229,25 @@ def Product_page(request):
     }
     return render(request, 'product.html', context)
 
-def Product_Detail(request , id):
+def Product_Detail(request, id):
     types = Type.objects.all()
     
-    product = LandHouse.objects.filter(id = id).first()
+    product = LandHouse.objects.filter(id=id).first()
     if product is None:
-        product = Apartment.objects.filter(id = id).first()
+        product = Apartment.objects.filter(id=id).first()
+
+    Land = LandHouse.objects.all()
+    Apart = Apartment.objects.all()
+    recommend = list(Land) + list(Apart)
+    if recommend:
+        random.shuffle(recommend)
 
     context = {
         'types': types,
-        'product': product
+        'product': product,
+        'recommend_product': recommend[:8],  # Lấy tối đa 8 sản phẩm
     }
-    return render(request, 'product_detail.html' , context)
+    return render(request, 'product_detail.html', context)
 
 def Search(request):
     query = request.GET['query']

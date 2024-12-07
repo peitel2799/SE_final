@@ -17,7 +17,7 @@
                     <div class="single-products">
                         <div class="productinfo text-center">
                             <img src="{{ value.image }}" alt="{{ value.name }}" style="width: 100%; height: 300px; object-fit: cover; border-radius: 5px;" />
-                            <h2>${{ value.price }}</h2>
+                            <h2>{{ value.price }}</h2>
                             <p>{{ value.name }}</p>
                             <a href="{% url 'item_clear' key %}" class="btn btn-danger btn-sm">
                                 <i class="fa fa-times"></i> Remove

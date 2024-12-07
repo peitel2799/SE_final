@@ -33,9 +33,10 @@
                     </div><!--/brands_products--> {% endcomment %}
                     
                     <div class="shipping text-center"><!--shipping-->
-                        <img src="/static/images/home/shipping.jpg" alt="" />
+                        <img src="\static\images\home\8xbet.jpg" alt="" style="margin-bottom: 20px;" />
+                        <img src="/static/images/home/adv.gif" alt="" style="margin-bottom: 20px;" />
                     </div><!--/shipping-->
-                
+
                 </div>
             </div>
             
@@ -86,15 +87,15 @@
                             <span>
                                 <span>{{product.price}} đ</span>
                                 <a href="{% url 'cart_add' product.id %}" class="btn btn-default add-to-cart">
-                                    <i class="fa fa-shopping-cart"></i>Add to cart
+                                    <i class="fa fa-shopping-cart"></i>Thêm vào yêu thích
                                 </a>
                             </span>
                             <p><b>Giá theo mét vuông:</b> {{product.price_per_sqm}}</p>
                             <p><b>Địa chỉ:</b> {{product.address}}</p>
                             {%if product.real_estate_type.name == "Nhà đất"%}
-                                <p><b>Tình trạng bàn giao:</b> Giao bán</p>
+                                <p><b>Tình trạng:</b> Giao bán</p>
                             {%else%}
-                                <p><b>Khả dụng:</b>{{product.delivery_status}}</p>
+                                <p><b>Tình trạng bàn giao:</b>{{product.delivery_status}}</p>
                             {%endif%}
                             <p><b>Loại hình:</b> {{product.real_estate_type}}</p>
                             
@@ -246,7 +247,65 @@
                 
                 <div class="recommended_items"><!--recommended_items-->
                     
-                    
+                    <h2 class="title text-center">recommended items</h2>
+						
+                    <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="item active">	
+                                {% for prod in recommend_product|slice:":3" %}
+                                <div class="col-sm-4">
+                                    <div class="product-image-wrapper">
+                                        <div class="single-products">
+                                            <div class="productinfo text-center">
+                                                <img src="/{{prod.image}}" alt="" />
+                                                <h2>{{ prod.price }}</h2>
+                                                <p>{{ prod.title }}</p>
+                                                <a href="{% url 'cart_add' prod.id %}" class="btn btn-default add-to-cart">
+                                                    <i class="fa fa-shopping-cart"></i>Thêm vào yêu thích
+                                                </a>
+                                                <div class="choose">
+                                                    <ul class="nav nav-pills nav-justified">
+                                                        <li><a href="{% url 'product_detail' prod.id %}"><i class="fa fa-plus-square"></i>Thông tin sản phẩm</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="item">	
+                                {% for prod in recommend_product|slice:"-3:" %}
+                                <div class="col-sm-4">
+                                    <div class="product-image-wrapper">
+                                        <div class="single-products">
+                                            <div class="productinfo text-center">
+                                                <img src="/{{prod.image}}" alt="" style="width: 100%; height: 300px; object-fit: cover; border-radius: 5px;"/>
+                                                <h2>{{ prod.price }}</h2>
+                                                <p>{{ prod.title }}</p>
+                                                <a href="{% url 'cart_add' prod.id %}" class="btn btn-default add-to-cart">
+                                                    <i class="fa fa-shopping-cart"></i>Thêm vào yêu thích
+                                                </a>
+                                                <div class="choose">
+                                                    <ul class="nav nav-pills nav-justified">
+                                                        <li><a href="{% url 'product_detail' prod.id %}"><i class="fa fa-plus-square"></i>Thông tin sản phẩm</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                        <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </div>
+
                 </div><!--/recommended_items-->
                 
             </div>

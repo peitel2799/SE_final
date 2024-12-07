@@ -113,6 +113,10 @@ class Product(models.Model):
     description = models.TextField(null=True, blank=True)  # Mô tả
     image = models.ImageField(upload_to='ecommerce/pimage', default='images/default.jpg')  # URL hình ảnh
     created_at = models.DateTimeField(auto_now_add=True)  # Ngày thêm
+    
+    def address_first_part(self):
+        print(self.address.split(",")[0] if self.address else "")
+        return self.address.split(",")[0] if self.address else ""
 
     # Liên kết tới bảng loại hình (Nhà đất, Chung cư)
     real_estate_type = models.ForeignKey(Type, on_delete=models.SET_NULL, null=True)

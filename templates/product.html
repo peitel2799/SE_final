@@ -26,7 +26,7 @@
                         {%endfor%}
                     </div><!--/category-productsr-->
                 
-                    <div class="brands_products"><!--brands_products-->
+                    {% comment %} <div class="brands_products"><!--brands_products-->
                         <h2>Brands</h2>
                         <div class="brands-name">
                             <ul class="nav nav-pills nav-stacked">
@@ -35,18 +35,19 @@
                                 {%endfor%}
                             </ul>
                         </div>
-                    </div><!--/brands_products-->
+                    </div><!--/brands_products--> {% endcomment %}
                     
                     <div class="price-range"><!--price-range-->
                         <h2>Price Range</h2>
                         <div class="well">
                              <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
-                             <b>0 đ</b> <b class="pull-right">600 đ</b>
+                             <b>0 đ</b> <b class="pull-right">60 tỷ đ</b>
                         </div>
                     </div><!--/price-range-->
                     
                     <div class="shipping text-center"><!--shipping-->
-                        <img src="images/home/shipping.jpg" alt="" />
+                        <img src="\static\images\home\8xbet.jpg" alt="" style="margin-bottom: 20px;" />
+                        <img src="/static/images/home/adv.gif" alt="" style="margin-bottom: 20px;" />
                     </div><!--/shipping-->
                     
                 </div>
@@ -54,7 +55,7 @@
 
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
-                    <h2 class="title text-center">Features Items</h2>
+                    <h2 class="title text-center">Sản phẩm</h2>
                     {% for prod in products %}
                     <div class="col-sm-4">
                         <div class="product-image-wrapper">
@@ -64,13 +65,13 @@
                                     <h2>{{prod.price}} đ</h2>
                                     <p>{{prod.title}}</p>
                                     <a href="{% url 'cart_add' prod.id %}" class="btn btn-default add-to-cart">
-                                        <i class="fa fa-shopping-cart"></i>Add to cart
+                                        <i class="fa fa-shopping-cart"></i>Thêm vào yêu thích
                                     </a>
                                 </div>
                             </div>
                             <div class="choose">
                                 <ul class="nav nav-pills nav-justified">
-                                    <li><a href="{% url 'product_detail' prod.id %}"><i class="fa fa-plus-square"></i>View Product</a></li>
+                                    <li><a href="{% url 'product_detail' prod.id %}"><i class="fa fa-plus-square"></i>Thông tin sản phẩm</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -79,25 +80,28 @@
                     <div class="clearfix"></div>
                     {% endif %}
                     {% endfor %}
-
-                    <!-- Pagination controls -->
-                    <div class="pagination-wrapper">
-                        <ul class="pagination">
-                            {% if products.has_previous %}
-                                <li><a href="?page={{ products.previous_page_number }}">«</a></li>
-                            {% endif %}
-                            {% for num in products.paginator.page_range %}
-                                <li class="{% if products.number == num %}active{% endif %}">
-                                    <a href="?page={{ num }}">{{ num }}</a>
-                                </li>
-                            {% endfor %}
-                            {% if products.has_next %}
-                                <li><a href="?page={{ products.next_page_number }}">»</a></li>
-                            {% endif %}
-                        </ul>
-                    </div>
+                    
                 </div><!--features_items-->
+                    <div class="features_items">
+                        <div class="pagination-wrapper" style="text-align: center;">
+                            <ul class="pagination">
+                                {% if products.has_previous %}
+                                    <li><a href="?page={{ products.previous_page_number }}">«</a></li>
+                                {% endif %}
+                                {% for num in products.paginator.page_range %}
+                                    <li class="{% if products.number == num %}active{% endif %}">
+                                        <a href="?page={{ num }}">{{ num }}</a>
+                                    </li>
+                                {% endfor %}
+                                {% if products.has_next %}
+                                    <li><a href="?page={{ products.next_page_number }}">»</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
             </div>
+            <!-- Pagination controls -->
+            
         </div>
     </div>
 </section>
