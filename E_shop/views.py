@@ -250,11 +250,36 @@ def Product_Detail(request, id):
     return render(request, 'product_detail.html', context)
 
 def Search(request):
-    query = request.GET['query']
+    query = request.GET.get('query', '').strip()  # Đảm bảo sử dụng .get() để tránh lỗi khi không có key 'query'
     
-    product = Product.objects.filter(name_icontains = query)
+    if query:  # Nếu có từ khóa tìm kiếm
+        # Tạo truy vấn với nhiều điều kiện tìm kiếm cho LandHouse và Apartment
+        land_houses = LandHouse.objects.filter(
+            Q(title__icontains=query) | Q(address__icontains=query)  # Tìm kiếm title hoặc address
+        )
+
+        apartments = Apartment.objects.filter(
+            Q(title__icontains=query) | Q(address__icontains=query)  # Tìm kiếm title hoặc address
+        )
+        
+        # Kết hợp kết quả tìm kiếm của LandHouse và Apartment
+        products = list(land_houses) + list(apartments)
+
+    else:
+        # Nếu không có query, không lọc và trả về tất cả sản phẩm
+        land_houses = LandHouse.objects.all()
+        apartments = Apartment.objects.all()
+        products = list(land_houses) + list(apartments)
+
+    # In ra để kiểm tra
+    print(products)
+    
+    # Trộn danh sách kết quả để hiển thị ngẫu nhiên
+    random.shuffle(products)
+    
+    # Truyền kết quả tìm kiếm vào context để hiển thị
     context = {
-        'product': product
+        'products': products[:9],  # Lấy tối đa 9 sản phẩm
     }
     
     return render(request, 'search.html', context)
