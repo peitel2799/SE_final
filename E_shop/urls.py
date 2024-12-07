@@ -39,7 +39,7 @@ urlpatterns = [
     path('cart/cart_detail/' , views.car_detail , name= 'cart_detail'),
     
     #contact page
-    path('contact_us', views.Contact_Page, name="contact_page"),
+    path('contact_us/', views.Contact_Page, name="contact_page"),
 
     #checkout page
     # path('checkout/', views.CheckOut, name='checkout'),
