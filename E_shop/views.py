@@ -58,7 +58,13 @@ def custom_logout(request):
 @login_required(login_url="/accounts/login/")
 def cart_add(request , id):
     cart = Cart(request)
-    product = Product.objects.get(id = id)
+        
+    # Lọc sản phẩm theo loại hình
+    product = LandHouse.objects.filter(id = id).first()
+    if product is None:
+        product = Apartment.objects.filter(id = id).first()
+    
+    #product = Product.objects.get(id = id)
     cart.add(product= product)
     return redirect('index')
 
@@ -66,23 +72,29 @@ def cart_add(request , id):
 @login_required(login_url="/accounts/login/")
 def item_clear(request , id):
     cart = Cart(request)
-    product = Product.objects.get(id = id)
+    product = LandHouse.objects.filter(id = id).first()
+    if product is None:
+        product = Apartment.objects.filter(id = id).first()
     cart.remove(product)
     return redirect('cart_detail')
 
-@login_required(login_url="/accounts/login/")
+""" @login_required(login_url="/accounts/login/")
 def item_increment(request , id):
     cart = Cart(request)
-    product = Product.objects.get(id = id)
+    product = LandHouse.objects.filter(id = id).first()
+    if product is None:
+        product = Apartment.objects.filter(id = id).first()
     cart.add(product= product)
-    return redirect('cart_detail')
+    return redirect('cart_detail') """
 
-@login_required(login_url="/accounts/login/")
+""" @login_required(login_url="/accounts/login/")
 def item_decrement(request , id):
     cart = Cart(request)
-    product = Product.objects.get(id = id)
+    product = LandHouse.objects.filter(id = id).first()
+    if product is None:
+        product = Apartment.objects.filter(id = id).first()
     cart.decrement(product= product)
-    return redirect('cart_detail')
+    return redirect('cart_detail') """
 
 @login_required(login_url="/accounts/login/")
 def cart_clear(request ):
@@ -178,6 +190,7 @@ def Product_Detail(request):
 
 def Search(request):
     query = request.GET['query']
+    
     product = Product.objects.filter(name_icontains = query)
     context = {
         'product': product

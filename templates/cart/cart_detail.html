@@ -17,7 +17,7 @@
                         <td class="image">Item</td>
                         <td class="description"></td>
                         <td class="price">Price</td>
-                        <td class="quantity">Quantity</td>
+                        <td class="quantity"></td>
                         <td class="total">Total</td>
                         <td></td>
                     </tr>
@@ -35,15 +35,15 @@
                             <td class="cart_price">
                                 <p>${{value.price}}</p>
                             </td>
-                            <td class="cart_quantity">
+                            {% comment %} <td class="cart_quantity">
                                 <div class="cart_quantity_button">
                                     <a class="cart_quantity_up" href="{% url 'item_increment' value.product_id %}"> + </a>
                                     <input class="cart_quantity_input" type="text" name="quantity" value="{{value.quantity}}" autocomplete="off" size="2">
                                     <a class="cart_quantity_down" href="{% url 'item_decrement' value.product_id %}"> - </a>
                                 </div>
-                            </td>
+                            </td> {% endcomment %}
                             <td class="cart_total">
-                                <p class="cart_total_price">${{value.price|multiply:value.quantity}}</p>
+{% comment %}                     <p class="cart_total_price">${{value.price|multiply:value.quantity}}</p> {% endcomment %}
                             </td>
                             <td class="cart_delete">
                                 <a class="cart_quantity_delete" href="{% url 'item_clear' key %}"><i class="fa fa-times"></i></a>
