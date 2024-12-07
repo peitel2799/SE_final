@@ -18,87 +18,7 @@
     <script src="/static/js/html5shiv.js"></script>
     <script src="/static/js/respond.min.js"></script>
     {% comment %} <![endif]-->        {% endcomment %}
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="/static/images/ico/apple-touch-icon-57-precomposed.png">
-	<style>
-		/* Floating button styles */
-		.chatbot-button {
-		  position: fixed;
-		  bottom: 100px;
-		  right: 20px;
-		  width: 60px;
-		  height: 60px;
-		  background-color: #ffd700;
-		  border-radius: 50%;
-		  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-		  display: flex;
-		  justify-content: center;
-		  align-items: center;
-		  cursor: pointer;
-		  z-index: 1000;
-		}
-	
-		.chatbot-button img {
-		  width: 40px;
-		  height: 40px;
-		}
-	
-		/* Chatbox styles */
-		.chatbox {
-		  position: fixed;
-		  bottom: 160px;
-		  right: 20px;
-		  width: 300px;
-		  height: 400px;
-		  background-color: white;
-		  border-radius: 10px;
-		  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-		  display: none;
-		  flex-direction: column;
-		  z-index: 999;
-		}
-	
-		.chatbox-header {
-		  background-color: #ffd700;
-		  padding: 10px;
-		  border-top-left-radius: 10px;
-		  border-top-right-radius: 10px;
-		  text-align: center;
-		  font-weight: bold;
-		}
-	
-		.chatbox-messages {
-		  flex: 1;
-		  padding: 10px;
-		  overflow-y: auto;
-		  border-top: 1px solid #ddd;
-		  border-bottom: 1px solid #ddd;
-		}
-	
-		.chatbox-footer {
-		  display: flex;
-		  padding: 10px;
-		}
-	
-		.chatbox-footer input {
-		  flex: 1;
-		  padding: 10px;
-		  border: 1px solid #ddd;
-		  border-radius: 5px;
-		}
-	
-		.chatbox-footer button {
-		  margin-left: 10px;
-		  padding: 10px;
-		  background-color: #ffd700;
-		  border: none;
-		  border-radius: 5px;
-		  cursor: pointer;
-		}
-    </style>
+    
 </head><!--/head-->
 
 <body>
@@ -137,40 +57,40 @@
 							<a href="{% url 'index' %}"><img src="/static/images/home/logo.png" alt="" /></a>
 						</div>
 						<div class="btn-group pull-right">
-							{% comment %} <div class="btn-group">
+							<div class="btn-group">
 								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									USA
+									VIETNAM
 									<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">
-									<li><a href="#">Canada</a></li>
 									<li><a href="#">UK</a></li>
+									<li><a href="#">JAPAN</a></li>
 								</ul>
-							</div> {% endcomment %}
+							</div>
 							
-							{% comment %} <div class="btn-group">
+							<div class="btn-group">
 								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									DOLLAR
+									VNĐ
 									<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">
-									<li><a href="#">Canadian Dollar</a></li>
-									<li><a href="#">Pound</a></li>
+									<li><a href="#">DOLLAR</a></li>
+									<li><a href="#">POUND</a></li>
 								</ul>
-							</div> {% endcomment %}
+							</div>
 						</div>
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								{% comment %} <li><a href="#"><i class="fa fa-user"></i> Account</a></li> {% endcomment %}
-								{% comment %} <li><a href="/order/"><i class="fa fa-star"></i>Your Order</a></li> {% endcomment %}
-								{% comment %} <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li> {% endcomment %}
-								<li><a href="/cart/cart_detail/"><i class="fa fa-shopping-cart"></i> Yêu thích <span class = "badge badge-secondary">{{request.session.cart|length}}</span> </a></li>
+								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
+								<li><a href="/order/"><i class="fa fa-star"></i>Your Order</a></li>
+								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+								<li><a href="/cart/cart_detail/"><i class="fa fa-shopping-cart"></i> Cart <span class = "badge badge-secondary">{{request.session.cart|length}}</span> </a></li>
 								{%if user.is_authenticated%}
-								<li><a href="{% url 'logout' %}"><i class="fa fa-lock"></i> Đăng xuất</a></li>
+								<li><a href="{% url 'logout' %}"><i class="fa fa-lock"></i> Logout</a></li>
 								{%else%}
-								<li><a href="{% url 'login' %}"><i class="fa fa-lock"></i> Đăng nhập</a></li>
+								<li><a href="{% url 'login' %}"><i class="fa fa-lock"></i> Login</a></li>
 								{%endif%}
 							</ul>
 						</div>
@@ -196,13 +116,11 @@
 								<li><a href="{% url 'index' %}" class="active">Home</a></li>
 								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="/product/">Các sản phẩm</a></li>
-										<li><a href="/cart/cart_detail/">Yêu thích</a></li> 	
-										{%if user.is_authenticated%}
-										<li><a href="{% url 'logout' %}">Đăng xuất</a></li>
-										{%else%}
-										<li><a href="{% url 'login' %}">Đăng nhập</a></li>
-										{%endif%}
+                                        <li><a href="/product/">Products</a></li>
+										
+										<li><a href="checkout.html">Checkout</a></li> 
+										<li><a href="cart/cart_detail/">Cart</a></li> 
+										<li><a href="login.html">Login</a></li> 
                                     </ul>
                                 </li> 
 								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
@@ -211,7 +129,8 @@
 										<li><a href="blog-single.html">Blog Single</a></li>
                                     </ul>
                                 </li> 
-								<li><a href="contact.html">Contact</a></li>
+								<li><a href="404.html">404</a></li>
+								<li><a href="/contact_us/">Contact</a></li>
 							</ul>
 						</div>
 					</div>
@@ -227,91 +146,57 @@
 	</header><!--/header-->
 
     {% block body %} {% endblock %}
-	<div class="chatbot-button" id="chatbot-button">
-		<img src="/static/images/R.png" alt="Chatbot Icon">
-	  </div>
-	  
-	  <!-- Chatbox -->
-	  <div class="chatbox" id="chatbox">
-		<div class="chatbox-header">
-		  Chatbot
-		</div>
-		<div class="chatbox-messages" id="chatbox-messages">
-		  <p>Xin chào! Tôi có thể giúp gì cho bạn?</p>
-		</div>
-		<div class="chatbox-footer">
-		  <input type="text" id="chat-input" placeholder="Nhập tin nhắn...">
-		  <button id="send-button">Gửi</button>
-		</div>
-	  </div>
     <footer id="footer"><!--Footer-->
-		<div class="footer-top">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-2">
-						<div class="companyinfo">
-							<h2><span>e</span>-shopper</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
-						</div>
+	<!--ĐOẠN CẦN SỬA CHO TITLE Ở CUỐI TRANG-->
+	<div class="footer-top">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-2">
+					<div class="companyinfo">
+						<h2><span>CHILL</span>House</h2>
+						<p>Nhà là nơi để thư giãn. Mỗi căn nhà là một món quà cho bạn</p>
 					</div>
-					<div class="col-sm-7">
-						<div class="col-sm-3">
-							<div class="video-gallery text-center">
-								<a href="#">
-									<div class="iframe-img">
-										<img src="/static/images/home/iframe1.png" alt="" />
-									</div>
-									<div class="overlay-icon">
-										<i class="fa fa-play-circle-o"></i>
-									</div>
-								</a>
-								<p>Circle of Hands</p>
-								<h2>24 DEC 2014</h2>
+				</div>
+				
+				<div class="col-sm-10">
+					<div class="row">
+						<div class="col-sm-2">
+							<div class="image-gallery text-center">
+								<img src="/static/images/home/iframe1.png" alt="Ngô Minh Quân" />
+								<p>Ngô Minh Quân</p>
+								<p>Developer</p>
 							</div>
 						</div>
-						
-						<div class="col-sm-3">
-							<div class="video-gallery text-center">
-								<a href="#">
-									<div class="iframe-img">
-										<img src="/static/images/home/iframe2.png" alt="" />
-									</div>
-									<div class="overlay-icon">
-										<i class="fa fa-play-circle-o"></i>
-									</div>
-								</a>
-								<p>Circle of Hands</p>
-								<h2>24 DEC 2014</h2>
+	
+						<div class="col-sm-2">
+							<div class="image-gallery text-center">
+								<img src="/static/images/home/iframe2.png" alt="Trần Đình Phúc" />
+								<p>Trần Đình Phúc</p>
+								<p>Developer</p>
 							</div>
 						</div>
-						
-						<div class="col-sm-3">
-							<div class="video-gallery text-center">
-								<a href="#">
-									<div class="iframe-img">
-										<img src="/static/images/home/iframe3.png" alt="" />
-									</div>
-									<div class="overlay-icon">
-										<i class="fa fa-play-circle-o"></i>
-									</div>
-								</a>
-								<p>Circle of Hands</p>
-								<h2>24 DEC 2014</h2>
+	
+						<div class="col-sm-2">
+							<div class="image-gallery text-center">
+								<img src="/static/images/home/iframe3.png" alt="Lê Ngọc Tiệp" />
+								<p>Lê Ngọc Tiệp</p>
+								<p>Developer</p>
 							</div>
 						</div>
-						
-						<div class="col-sm-3">
-							<div class="video-gallery text-center">
-								<a href="#">
-									<div class="iframe-img">
-										<img src="/static/images/home/iframe4.png" alt="" />
-									</div>
-									<div class="overlay-icon">
-										<i class="fa fa-play-circle-o"></i>
-									</div>
-								</a>
-								<p>Circle of Hands</p>
-								<h2>24 DEC 2014</h2>
+	
+						<div class="col-sm-2">
+							<div class="image-gallery text-center">
+								<img src="/static/images/home/iframe4.png" alt="Nguyễn Minh Ngọc" />
+								<p>Nguyễn Minh Ngọc</p>
+								<p>Developer</p>
+							</div>
+						</div>
+	
+						<div class="col-sm-2">
+							<div class="image-gallery text-center">
+								<img src="/static/images/home/iframe3.png" alt="Nguyễn Huy Mạnh" />
+								<p>Nguyễn Huy Mạnh</p>
+								<p>Developer</p>
 							</div>
 						</div>
 					</div>
@@ -325,113 +210,20 @@
 			</div>
 		</div>
 		
-		<div class="footer-widget">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-2">
-						<div class="single-widget">
-							<h2>Service</h2>
-							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Online Help</a></li>
-								<li><a href="#">Contact Us</a></li>
-								<li><a href="#">Order Status</a></li>
-								<li><a href="#">Change Location</a></li>
-								<li><a href="#">FAQ’s</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-2">
-						<div class="single-widget">
-							<h2>Quock Shop</h2>
-							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">T-Shirt</a></li>
-								<li><a href="#">Mens</a></li>
-								<li><a href="#">Womens</a></li>
-								<li><a href="#">Gift Cards</a></li>
-								<li><a href="#">Shoes</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-2">
-						<div class="single-widget">
-							<h2>Policies</h2>
-							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Terms of Use</a></li>
-								<li><a href="#">Privecy Policy</a></li>
-								<li><a href="#">Refund Policy</a></li>
-								<li><a href="#">Billing System</a></li>
-								<li><a href="#">Ticket System</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-2">
-						<div class="single-widget">
-							<h2>About Shopper</h2>
-							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Company Information</a></li>
-								<li><a href="#">Careers</a></li>
-								<li><a href="#">Store Location</a></li>
-								<li><a href="#">Affillate Program</a></li>
-								<li><a href="#">Copyright</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-3 col-sm-offset-1">
-						<div class="single-widget">
-							<h2>About Shopper</h2>
-							<form action="#" class="searchform">
-								<input type="text" placeholder="Your email address" />
-								<button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
-								<p>Get the most recent updates from <br />our site and be updated your self...</p>
-							</form>
-						</div>
-					</div>
-					
-				</div>
-			</div>
-		</div>
 		
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row">
-					<p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
-					<p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
+					<p class="pull-left">BaiTapLon Nhap Mon Cong Nghe Phan Mem 2024.1.</p>
 				</div>
 			</div>
 		</div>
 	</footer><!--/Footer-->
-	<script>
-		// Get elements
-		const chatbotButton = document.getElementById('chatbot-button');
-		const chatbox = document.getElementById('chatbox');
-		const sendButton = document.getElementById('send-button');
-		const chatInput = document.getElementById('chat-input');
-		const chatMessages = document.getElementById('chatbox-messages');
-	
-		// Toggle chatbox display
-		chatbotButton.addEventListener('click', () => {
-		  chatbox.style.display = chatbox.style.display === 'flex' ? 'none' : 'flex';
-		});
-	
-		// Handle sending message
-		sendButton.addEventListener('click', () => {
-		  const message = chatInput.value.trim();
-		  if (message) {
-			const userMessage = document.createElement('p');
-			userMessage.textContent = message;
-			userMessage.style.textAlign = 'right'; // Align user messages to the right
-			chatMessages.appendChild(userMessage);
-			chatInput.value = '';
-			chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll to the bottom
-		  }
-		});
-	  </script>
     <script src="/static/js/jquery.js"></script>
 	<script src="/static/js/bootstrap.min.js"></script>
 	<script src="/static/js/jquery.scrollUp.min.js"></script>
 	<script src="/static/js/price-range.js"></script>
     <script src="/static/js/jquery.prettyPhoto.js"></script>
     <script src="/static/js/main.js"></script>
-
 </body>
 </html>    
