@@ -5,6 +5,7 @@ from app.models import UseCreateForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from cart.cart import Cart
+from django.db.models import Q
 import random
 
 def Master(request):
@@ -248,6 +249,7 @@ def Product_Detail(request, id):
         'recommend_product': recommend[:8],  # Lấy tối đa 8 sản phẩm
     }
     return render(request, 'product_detail.html', context)
+
 
 def Search(request):
     query = request.GET.get('query', '').strip()  # Đảm bảo sử dụng .get() để tránh lỗi khi không có key 'query'
