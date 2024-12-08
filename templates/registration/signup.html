@@ -5,7 +5,7 @@
     <div class="container">
         <div class="col-sm-4 col-sm-offset-1">
             <div class="signup-form"><!--login form-->
-                    <h2>New user signup</h2>
+                    <h2>Tạo tài khoản mới</h2>
                     <form method = "post">
                         {% csrf_token %}
                         {%for field in form%}
@@ -13,8 +13,8 @@
                         <p>{{ field }}</p>
                         {%endfor%}
 
-                        <button class = "btn btn-default" type = "submit">Signup</button><br>
-                        <span style="margin-left:84px">Already have an Account</span>&nbsp;<a href = "{% url 'login' %}">Login</a>
+                        <button class = "btn btn-default" type = "submit">Đăng kí</button><br>
+                        <span style="margin-left:84px">Đã có tài khoản</span>&nbsp;<a href = "{% url 'login' %}">Đăng nhập</a>
                     </form>
             </div>
         </div>

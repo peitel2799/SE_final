@@ -252,7 +252,7 @@ a#scrollUp i{
 	color:#fdb45e;
 }
 
-.search_box input {
+/* .search_box input {
   background: #F0F0E9;
   border: medium none;
   color: #B2B2B2;
@@ -266,6 +266,35 @@ a#scrollUp i{
   background-image: url(../images/home/searchicon.png);
   background-repeat: no-repeat;
   background-position: 130px;
+} */
+.search_box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 400px; /* Adjust the width as needed */
+}
+
+.search_box input {
+  width: 100%;
+  padding: 10px;
+  padding-right: 40px; /* Space for the button */
+  border: 1px solid #ccc;
+  border-radius: 20px; /* Adjust the border radius for rounded corners */
+}
+
+.search_box button {
+  position: absolute;
+  right: 10px; /* Position the button inside the input box */
+  background-color: transparent; /* Transparent background for icon button */
+  border: none;
+  color: #007bff; /* Icon color */
+  font-size: 18px; /* Adjust the icon size */
+  cursor: pointer;
+}
+
+.search_box button:hover {
+  color: #0056b3; /* Icon hover color */
 }
 
 
@@ -504,7 +533,7 @@ ul.sub-menu {
 	color:#FE980F;
 }
 
-
+/* 
 .searchform input {
   border: 1px solid #DDDDDD;
   color: #CCCCC6;
@@ -542,7 +571,7 @@ ul.sub-menu {
   font-size: 14px;
   font-weight: 300;
   margin-top: 25px;
-}
+} */
 
 .footer-bottom {
   background: #D6D6D0;

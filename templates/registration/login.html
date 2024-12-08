@@ -5,7 +5,7 @@
     <div class="container">
         <div class="col-sm-4 col-sm-offset-1">
             <div class="signup-form"><!--login form-->
-                    <h2>Login To Your Account</h2>
+                    <h2>Đăng nhập</h2>
                     <form method = "post">
                         {% csrf_token %}
                         {%for field in form%}
@@ -13,10 +13,10 @@
                         <label>{{field.label_tag}}</label>
                         <p>{{ field }}</p>
                         {%endfor%}
-                        <a href = "{% url 'password_reset' %}" style = "float:right;">Forgot Password ?</a><br>
+                        <a href = "{% url 'password_reset' %}" style = "float:right;">Quên mật khẩu</a><br>
 
                         <button class = "btn btn-default" type = "submit">Login</button>
-                        <a href = "{% url 'signup' %}"><span style = "color:black;margin-left:120px;">Create Your Account&nbsp;&rarr;</span></a><br>
+                        <a href = "{% url 'signup' %}"><span style = "color:black;margin-left:120px;">Tạo tài khoản&nbsp;&rarr;</span></a><br>
                     </form>
             </div>
         </div>
