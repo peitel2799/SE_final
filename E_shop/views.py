@@ -131,6 +131,19 @@ def Contact_Page(request):
         )
         contact.save()
     return render(request, 'contact.html')
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt
+def contact(request):
+    if request.method == 'POST':
+        contact = Contact_us(
+            name = request.POST.get('name'),
+            email = request.POST.get('email'),
+            subject = request.POST.get('subject'),
+            message = request.POST.get('message'),
+        )
+        contact.save()
+    return render(request, 'cart/cart_detail.html')
 
 # def CheckOut(request):
 #     if request.method == "POST":
@@ -296,3 +309,8 @@ def Search(request):
     }
     
     return render(request, 'search.html', context)
+
+
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+

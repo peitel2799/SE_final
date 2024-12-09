@@ -9,7 +9,7 @@
 # admin.site.register(Contact_us)
 # admin.site.register(Brand)
 from django.contrib import admin
-from .models import LandHouse, Apartment, Type, Product
+from .models import LandHouse, Apartment, Type, Product, Contact_us
 admin.site.register(Type)
 # admin.site.register(Product)
 # Register for LandHouse
@@ -27,3 +27,8 @@ class ApartmentAdmin(admin.ModelAdmin):
     search_fields = ('title', 'address', 'project')
     list_filter = ('real_estate_type', 'created_at', 'balcony_direction', 'furniture_status')
     ordering = ('-created_at',)
+
+@admin.register(Contact_us)
+class ContactUsAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'subject', 'message')  
+    search_fields = ('name', 'email')

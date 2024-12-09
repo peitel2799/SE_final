@@ -41,6 +41,9 @@ urlpatterns = [
     #contact page
     path('contact_us/', views.Contact_Page, name="contact_page"),
 
+    #contact page
+    path('contact/', views.contact, name="contact"),
+
     #checkout page
     # path('checkout/', views.CheckOut, name='checkout'),
 
