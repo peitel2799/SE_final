@@ -42,7 +42,7 @@ def Index(request):
     context = {
         'types': types,
         'products': products[:9],  # Hiển thị tối đa 9 sản phẩm ngẫu nhiên
-        'products_by_area': products_by_area,
+        'products_by_area': {i: products_by_area[i][:8] for i in products_by_area},  # Hiển thị tối đa 8 sản phẩm cho mỗi khu vực
     }
     return render(request, 'index.html', context)
 
@@ -206,27 +206,38 @@ def Product_page(request):
 
     # Lọc sản phẩm theo loại hình, nếu được chọn
     if typeID:
-        selected_type = Type.objects.get(id=typeID)
-        if selected_type.name == 'Nhà đất':
-            products = LandHouse.objects.all().order_by('-id')
-        elif selected_type.name == 'Chung cư':
-            products = Apartment.objects.all().order_by('-id')
-        else:
-            products = []  # Không có sản phẩm nào nếu loại hình không hợp lệ
+        try:
+            selected_type = Type.objects.get(id=typeID)
+            if selected_type.name == 'Nhà đất':
+                products = LandHouse.objects.all().order_by('-id')
+            elif selected_type.name == 'Chung cư':
+                products = Apartment.objects.all().order_by('-id')
+            else:
+                products = []  # Không có sản phẩm nào nếu loại hình không hợp lệ
+        except Type.DoesNotExist:
+            products = []  # Nếu loại hình không tồn tại
     else:
         # Nếu không lọc, lấy toàn bộ sản phẩm
         products = list(LandHouse.objects.all()) + list(Apartment.objects.all())
-        # products = sorted(products, key=lambda x: x.id, reverse=True)  # Sort all products by id
-        random.shuffle(products)
+        random.shuffle(products)  # Trộn ngẫu nhiên các sản phẩm
 
-    # Add pagination
-    paginator = Paginator(products, 9)  # Show 9 products per page
-    page_number = request.GET.get('page')  # Get the current page number from the query string
-    page_obj = paginator.get_page(page_number)  # Get the corresponding page
+    # Phân trang
+    paginator = Paginator(products, 9)  # Hiển thị 9 sản phẩm mỗi trang
+    page_number = request.GET.get('page')  # Lấy số trang hiện tại từ query string
+    page_obj = paginator.get_page(page_number)  # Lấy trang tương ứng
 
+    # Tính toán giá trị bổ sung cho phân trang
+    num_pages = paginator.num_pages
+    page_range = paginator.page_range
+    last_page_minus_three = num_pages - 3 if num_pages > 3 else None
+
+    # Truyền context vào template
     context = {
-        'types': types,        # Truyền danh sách loại hình vào context
-        'products': page_obj,  # Pass the paginated products (page_obj) into context
+        'types': types,                          # Danh sách loại hình
+        'products': page_obj,                    # Sản phẩm phân trang
+        'num_pages': num_pages,                  # Tổng số trang
+        'last_page_minus_three': last_page_minus_three,  # Trang cuối - 3
+        'page_range': page_range,                # Dải trang
     }
     return render(request, 'product.html', context)
 
